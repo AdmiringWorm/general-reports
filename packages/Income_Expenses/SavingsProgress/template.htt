@@ -111,7 +111,7 @@
 		[ <TMPL_LOOP CONTENTS> <TMPL_VAR Balance1ago>, </TMPL_LOOP>],
 		[ <TMPL_LOOP CONTENTS> <TMPL_VAR BalanceNow>, </TMPL_LOOP>]
 	]
-	var dataAccountMajor = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[]]
+	var dataAccountMajor = [[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],[],]
 
 	for (var t=0; t < dataTimeMajor.length; t++)
 	{
@@ -165,9 +165,14 @@
 	}
 	var dataAccountColours = [ <TMPL_LOOP CONTENTS> "<TMPL_VAR COLOR>", </TMPL_LOOP>]
 	var dataAccountNames = [ <TMPL_LOOP CONTENTS> "<TMPL_VAR ACCOUNTNAME>", </TMPL_LOOP>]
-	for (var account=0; account < dataTimeMajor.length; account++)
+
+	for (var i = 0; i < monthTags.length; i++)
 	{
-			data.labels.push( monthTags[account][0] );
+		data.labels.push( monthTags[i][0] );
+	}
+
+	for (var account=0; account < dataAccountMajor.length; account++)
+	{
 			data.datasets.push(  {
 				fillColor : dataAccountColours[account],
 				data : dataAccountMajor[account],
@@ -177,7 +182,7 @@
 
 	var options = {
 		animationEasing: 'easeOutQuint',
-		legend:false,
+		legend:true,
 		annotateDisplay : true
 	}
 	var ctx = document.getElementById("reportChart").getContext("2d");
@@ -208,7 +213,6 @@
 		} 
 		element.innerHTML = '<TMPL_VAR PFX_SYMBOL>' + currency(element.innerHTML) +'<TMPL_VAR SFX_SYMBOL>';
 	}
-
 
 </script>
 </html>
