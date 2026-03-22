@@ -23,7 +23,7 @@ LEFT JOIN CURRENCYHISTORY_V1 AS CH ON CH.CURRENCYID = c.CURRENCYID AND
                                                       FROM	CURRENCYHISTORY_V1 AS CRHST
                                                      WHERE	CRHST.CURRENCYID = c.CURRENCYID
                                                 )
-where p.PAYEENAME = 'Payee1'
+where p.PAYEENAME = "&filter"
     and t.TRANSCODE='Withdrawal'
     and t.STATUS NOT IN ('D', 'V')
 group by year
